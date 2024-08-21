@@ -1,0 +1,8 @@
+/target
+main.exe
+main.pdb
+vcs.xml
+modules.xml
+encodings.xml
+.idea/
+*.iml
