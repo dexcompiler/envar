@@ -1,8 +1,8 @@
-﻿# Print Env Vars
+﻿# Envar
 
 ## Overview
 
-**print-env-vars** is a simple Rust command-line tool designed to read and display the value of a specified environment variable. This tool provides a quick and easy way to check the value of environment variables on your system, making it especially useful for developers and system administrators who need to debug environment configurations.
+**Envar** is a simple Rust command-line tool designed to read and display the value of a specified environment variable. This tool provides a quick and easy way to check the value of environment variables on your system, making it especially useful for developers and system administrators who need to debug environment configurations.
 
 ## Features
 
@@ -11,9 +11,9 @@
 - **Cross-Platform Compatibility**: The tool works seamlessly on Windows, Linux, and macOS, making it a versatile utility for different environments.
 - **Simple and Lightweight**: Built with simplicity in mind, this tool has minimal dependencies and a small footprint.
 
-## Installation
+## Build and Installation
 
-To use the `print-env-vars` tool, you need to have Rust installed on your system. You can install Rust using [rustup](https://rustup.rs/):
+To build the `envar` tool, you need to have Rust installed on your system. You can install Rust using [rustup](https://rustup.rs/):
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -28,22 +28,40 @@ cargo build --release
 This will generate the executable in the target/release directory.
 
 ## Usage
+### Basic Usage
 To run the print-env-vars tool, simply execute the compiled binary and enter the name of the environment variable you wish to read:
 
 ```shell
-./print-env-vars
+./envar <ENV_VAR>
 ```
- You will be prompted to enter the name of the environment variable:
- ```shell
-Enter the name of the environment variable: PATH
+For example, the command:
+```shell
+./envar PATH
 ```
-The tool will the output the value of the specified environment variable:
+will output the value of the "PATH" environment variable:
 ```shell
 The value of the environment variable 'PATH' is: /usr/local/bin:/usr/bin:/bin
 ```
-If the environment variable does not exist or is not set, the tool will display a message indicating that the variable was not found:
+If an environment variable does not exist or is not set, the tool will display a message indicating that the variable was not found:
 ```shell
 The environment variable 'NON_EXISTENT_VAR' was not found.
+```
+
+### Help Option
+You can also display usage instructions and examples by using the --help or -h option:
+```shell
+./envar --help
+```
+This will display the following help message:
+```shell
+Usage: envar <ENV_VAR>
+Retrieve the value of the specified environment variable.
+
+Options:
+  -h, --help     Show this help message
+
+Examples:
+  envar PATH     Retrieve the value of the 'PATH' environment variable
 ```
 
 ## Contributing

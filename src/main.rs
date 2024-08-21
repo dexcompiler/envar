@@ -1,28 +1,30 @@
 use std::env;
-use std::io::{self, Write};
 
-fn main() {
-    // prompt the user for the environment variable name
-    print!("Enter the name of the environment variable: ");
-    // ensure the prompt is flushed to the console
-    if let Err(e) = io::stdout().flush() {
-        eprintln!("Failed to flush stdout: {}", e);
+fn main() {    
+    let args: Vec<String> = env::args().collect();
+    
+    if args.len() != 2 
+        || args[1] == "help"
+        || args[1] == "-h" {
+        print_help();
         return;
     }
     
-    // read the input from stdin
-    let mut env_var_name = String::new();
-    if let Err(e) = io::stdin().read_line(&mut env_var_name) {
-        eprintln!("Failed to read line: {}", e);
-        return;
-    }
-    
-    // trim the newline from the input
-    let env_var_name = env_var_name.trim();
-    
-    // attempt to retrieve the environment variable
+    let env_var_name = &args[1];
+        
     match env::var(env_var_name) {
         Ok(value) => println!("The value of the environment variable '{}' is: {}", env_var_name, value),
         Err(_) => println!("The environment variable '{}' was not found", env_var_name),
     }
+}
+
+fn print_help() {
+    println!("Usage: envar <ENV_VAR>");
+    println!("Retrieves the value of the specified environment variable.");
+    println!();
+    println!("Options:");
+    println!(" -h, --help       Show this help message");
+    println!();
+    println!("Examples:");
+    println!(" envar ENV_VAR    Retrieves the value of the ENV_VAR environment variable");
 }

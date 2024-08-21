@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "print-env-vars"
+name = "envar"
 version = "0.1.0"

@@ -1,5 +1,5 @@
 [package]
-name = "print-env-vars"
+name = "envar"
 version = "0.1.0"
 edition = "2021"
 
