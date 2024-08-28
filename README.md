@@ -21,15 +21,15 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 Once Rust is installed, you can clone this repository and build the project:
 ```sh
-git clone https://github.com/yourusername/print-env-vars.git
-cd print-env-vars
+git clone https://github.com/dexcompiler/envar.git
+cd envar
 cargo build --release
 ```
 This will generate the executable in the target/release directory.
 
 ## Usage
 ### Basic Usage
-To run the print-env-vars tool, simply execute the compiled binary and enter the name of the environment variable you wish to read:
+To run the envar tool, simply execute the compiled binary and enter the name of the environment variable you wish to read:
 
 ```shell
 ./envar <ENV_VAR>
